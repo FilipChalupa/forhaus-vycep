@@ -1,0 +1,65 @@
+body {
+	text-align: center;
+}
+.button {
+	cursor: pointer;
+}
+.specificContainer.forhaus,
+.specificContainer.vycep {
+	display: none;
+}
+body.forhaus .specificContainer.vycep {
+	display: block;
+}
+body.vycep .specificContainer.vycep {
+	display: block;
+}
+#top, #content, #bottom {
+	position: absolute;
+		left: 0;
+		right: 0;
+}
+#top {
+		top: 0;
+	height: 10em;
+	background-color: yellow;
+}
+#content {
+		top: 10em;
+		bottom: 10em;
+	background-color: gray;
+}
+#bottom {
+		bottom: 0;
+	height: 10em;
+	background-color: yellow;
+}
+#top .button,
+#top .logo {
+	position: absolute;
+		top: 1em;
+		bottom: 0;
+		left: 0;
+}
+#top .button {
+	width: 20%;
+}
+#top .logo {
+		left: 20%;
+	width: 80%;
+}
+#bottom .button {
+	position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 40%;
+	width: 20%;
+}
+#bottom .button:first-child {
+		left: 0;
+	width: 40%;
+}
+#bottom .button:last-child {
+		left: 60%;
+	width: 40%;
+}
