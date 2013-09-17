@@ -4,14 +4,17 @@ body {
 .button {
 	cursor: pointer;
 }
-.specificContainer.forhaus,
-.specificContainer.vycep {
+.button.pressed {
+	box-shadow: 0 0 0.5em 0.5em rgba(0,0,0,0.5) inset;
+}
+.specific.forhaus,
+.specific.vycep {
 	display: none;
 }
-body.forhaus .specificContainer.vycep {
+body.forhaus .specific.forhaus {
 	display: block;
 }
-body.vycep .specificContainer.vycep {
+body.vycep .specific.vycep {
 	display: block;
 }
 #top, #content, #bottom {
@@ -22,7 +25,10 @@ body.vycep .specificContainer.vycep {
 #top {
 		top: 0;
 	height: 10em;
-	background-color: yellow;
+	background-color: white;
+}
+#top > .forhaus {
+	border-top: 0.5em solid #BAC405;
 }
 #content {
 		top: 10em;
@@ -37,7 +43,7 @@ body.vycep .specificContainer.vycep {
 #top .button,
 #top .logo {
 	position: absolute;
-		top: 1em;
+		top: 0.5em;
 		bottom: 0;
 		left: 0;
 }
@@ -46,20 +52,28 @@ body.vycep .specificContainer.vycep {
 }
 #top .logo {
 		left: 20%;
-	width: 80%;
+	width: 60%;
 }
 #bottom .button {
 	position: absolute;
 		top: 0;
 		bottom: 0;
-		left: 40%;
-	width: 20%;
+		left: 50%;
+	margin-left: -5em;
+	width: 10em;
+	z-index: 2;
 }
 #bottom .button:first-child {
 		left: 0;
-	width: 40%;
+		right: 50%;
+	margin-left: 0;
+	margin-right: 5em;
+	width: auto;
+	z-index: 1;
 }
 #bottom .button:last-child {
-		left: 60%;
-	width: 40%;
+		right: 0;
+	margin-left: 5em;
+	width: auto;
+	z-index: 1;
 }
