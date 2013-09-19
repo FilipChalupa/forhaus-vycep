@@ -1,20 +1,14 @@
 $(function () {
-    var $buttons = $('.button');
-	$buttons.on('mousedown',function(event) {
-		$(this).addClass('pressed');
-	});
-	$buttons.on('mouseout',function(event) {
-		$(this).removeClass('pressed');
-	});
-	$buttons.on('mouseup',function(event) {
-		var $this = $(this);
-		if ($this.hasClass('pressed')) {
-			doAction($this.data('action'));
-			$this.removeClass('pressed');
-		}
+    var $buttons = $('.button'),
+    	$menus = $('#top .menu');
+	$buttons.on('click',function(event) {
+		doAction($(this).data('action'));
 	});
 	function doAction(action) {
 		switch (action) {
+			case 'menu':
+				$menus.addClass('show');
+				break;
 			default:
 				alert(action);
 		}
