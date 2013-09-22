@@ -1,8 +1,14 @@
 body {
 	text-align: center;
+	font-size: 16px;
 }
+/*@media all and (min-resolution: 150dpi) { body { font-size: 15px; } }
+@media all and (min-resolution: 200dpi) { body { font-size: 20px; } }
+@media all and (min-resolution: 250dpi) { body { font-size: 25px; } }
+@media all and (min-resolution: 300dpi) { body { font-size: 30px; } }*/
 .button {
 	cursor: pointer;
+	position: relative;
 }
 .button:active {
 	box-shadow: 0 0 0.5em 0.5em rgba(0,0,0,0.5) inset;
@@ -93,4 +99,8 @@ body.vycep .specific.vycep {
 	margin-left: 5em;
 	width: auto;
 	z-index: 1;
+}
+
+img {
+	height: 100%;
 }
