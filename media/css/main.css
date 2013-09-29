@@ -1,6 +1,7 @@
 body {
 	text-align: center;
 	font-size: 16px;
+	margin: 0;
 }
 /*@media all and (min-resolution: 150dpi) { body { font-size: 15px; } }
 @media all and (min-resolution: 200dpi) { body { font-size: 20px; } }
@@ -14,8 +15,15 @@ body {
 	box-shadow: 0 0 0.5em 0.5em rgba(0,0,0,0.5) inset;
 }
 .specific.forhaus,
-.specific.vycep {
+.specific.vycep,
+body.forhaus #selection,
+body.vycep #selection,
+body #place {
 	display: none;
+}
+body.forhaus #place,
+body.vycep #place {
+	display: block;
 }
 body.forhaus .specific.forhaus {
 	display: block;
@@ -23,8 +31,48 @@ body.forhaus .specific.forhaus {
 body.vycep .specific.vycep {
 	display: block;
 }
-#top, #content, #bottom {
+#selection .place {
 	position: absolute;
+		top: 0;
+		bottom: 50%;
+		left: 0;
+		right: 0;
+	cursor: pointer;
+}
+#selection .place.vycep {
+	position: absolute;
+		top: 50%;
+		bottom: 0;
+}
+#selection .divider {
+	position: absolute;
+		left: 0;
+		right: 0;
+		top: 50%;
+	height: 1em;
+	margin-top: -0.5em;
+	background-color: #666666;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+}
+#selection .divider > div {
+	line-height: 1;
+	text-transform: uppercase;
+	position: absolute;
+		top: -1em;
+		left: 0;
+		right: 0;
+	margin: 0 auto;
+	display: block;
+	width: 10em;
+	padding: 0.5em;
+	height: 2em;
+	border: 1px solid black;
+	background-color: #666666;
+	color: white;
+}
+#top, #bottom {
+	position: fixed;
 		left: 0;
 		right: 0;
 }
@@ -37,8 +85,7 @@ body.vycep .specific.vycep {
 	border-top: 0.5em solid #BAC405;
 }
 #content {
-		top: 10em;
-		bottom: 10em;
+	margin: 10em 0;
 	background-color: gray;
 }
 #bottom {
@@ -54,11 +101,11 @@ body.vycep .specific.vycep {
 		left: 0;
 }
 #top > div > .button {
-	width: 20%;
+	width: 10em;
 }
 #top .logo {
-		left: 20%;
-	width: 60%;
+		left: 10em;
+		right: 10em
 }
 #top .menu {
 	text-align: left;
