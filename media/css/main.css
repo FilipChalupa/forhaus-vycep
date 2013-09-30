@@ -39,12 +39,46 @@ body.vycep .specific.vycep {
 		right: 0;
 	cursor: pointer;
 }
+#selection .place.forhaus {
+	background-image: url(../images/concrete.jpg);
+	background-size: cover;
+}
+#selection .place.forhaus:after {
+	content: '';
+	display: block;
+	position: absolute;
+		top: 2em;
+		left: 2em;
+		right: 2em;
+		bottom: 2em;
+	background-image: url(../images/forhaus_black.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
 #selection .place.vycep {
+	background-image: url(../images/wood.jpg);
+	background-size: contain;
 	position: absolute;
 		top: 50%;
 		bottom: 0;
 }
+#selection .place.vycep:after {
+	content: '';
+	display: block;
+	position: absolute;
+		top: 36%;
+		left: 0;
+		right: 0;
+		bottom: 36%;
+	background-color: #FFFFE6;
+	background-image: url(../images/vycep_logo.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
 #selection .divider {
+	z-index: 10;
 	position: absolute;
 		left: 0;
 		right: 0;
@@ -70,6 +104,7 @@ body.vycep .specific.vycep {
 	border: 1px solid black;
 	background-color: #666666;
 	color: white;
+	box-shadow: 0 0 5px rgba(0,0,0,0.7);
 }
 #top, #bottom {
 	position: fixed;
