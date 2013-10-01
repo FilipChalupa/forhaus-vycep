@@ -1,6 +1,6 @@
 body {
 	text-align: center;
-	font-size: 16px;
+	font-size: 23px;
 	margin: 0;
 }
 /*@media all and (min-resolution: 150dpi) { body { font-size: 15px; } }
@@ -13,6 +13,10 @@ body {
 }
 .button:active {
 	box-shadow: 0 0 0.5em 0.5em rgba(0,0,0,0.5) inset;
+}
+.button img {
+	width: 100%;
+	height: 100%;
 }
 .specific.forhaus,
 .specific.vycep,
@@ -39,11 +43,13 @@ body.vycep .specific.vycep {
 		right: 0;
 	cursor: pointer;
 }
-#selection .place.forhaus {
+#selection .place.forhaus,
+body.forhaus #top {
 	background-image: url(../images/concrete.jpg);
 	background-size: cover;
 }
-#selection .place.forhaus:after {
+#selection .place.forhaus:after,
+body.forhaus #top .logo {
 	content: '';
 	display: block;
 	position: absolute;
@@ -55,6 +61,12 @@ body.vycep .specific.vycep {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+body.forhaus #top .logo {
+		left: 0;
+		right: 0;
+		top: 0.3em;
+		bottom: 0;
 }
 #selection .place.vycep {
 	background-image: url(../images/wood.jpg);
@@ -113,41 +125,55 @@ body.vycep .specific.vycep {
 }
 #top {
 		top: 0;
-	height: 10em;
+	height: 5em;
 	background-color: white;
 }
 #top > .forhaus {
-	border-top: 0.5em solid #BAC405;
+	border-top: 0.3em solid #BAC405;
 }
 #content {
-	margin: 10em 0;
-	background-color: gray;
+	margin: 5em 0;
+}
+body.forhaus #content {
+	background-image: url(../images/forhaus_pattern.svg);
+	background-size: 0.3em;
 }
 #bottom {
 		bottom: 0;
-	height: 10em;
+	height: 5em;
 	background-color: yellow;
 }
 #top > div > .button,
 #top .logo {
 	position: absolute;
-		top: 0.5em;
+		top: 0.3em;
 		bottom: 0;
 		left: 0;
 }
+body.vycep #top > div > .button,
+body.vycep #top .logo {
+		top: 0;
+}
 #top > div > .button {
-	width: 10em;
+	width: 5em;
+}
+body.forhaus #top > div > .button {
+	width: 4.5em;
 }
 #top .logo {
-		left: 10em;
-		right: 10em
+		left: 5em;
+		right: 5em
+}
+body.forhaus #top .logo {
+		left: 4.5em;
+		right: 4.5em
 }
 #top .menu {
 	text-align: left;
 	border: 1px solid black;
 	z-index: 30;
 	position: absolute;
-		top: 10em;
+		top: 5em;
 		left: 0;
 	display: none;
 }
@@ -164,25 +190,21 @@ body.vycep .specific.vycep {
 		top: 0;
 		bottom: 0;
 		left: 50%;
-	margin-left: -5em;
-	width: 10em;
+	margin-left: -2.5em;
+	width: 5em;
 	z-index: 2;
 }
 #bottom .button:first-child {
 		left: 0;
 		right: 50%;
 	margin-left: 0;
-	margin-right: 5em;
+	margin-right: 2.5em;
 	width: auto;
 	z-index: 1;
 }
 #bottom .button:last-child {
 		right: 0;
-	margin-left: 5em;
+	margin-left: 2.5em;
 	width: auto;
 	z-index: 1;
-}
-
-img {
-	height: 100%;
 }

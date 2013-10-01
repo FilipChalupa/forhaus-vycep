@@ -1,0 +1,20 @@
+<svg width="5" height="5" xmlns="http://www.w3.org/2000/svg">
+	<style>
+		rect {
+			stroke-width: 1;
+			fill: #E0E0E0;
+		}
+		line {
+			stroke-width: 1;
+			stroke: #EFEFEF;
+		}
+		polygon {
+			stroke-width: 0;
+			fill: #EFEFEF;
+		}
+	</style>
+	<rect height="100%" width="100%" y="0" x="0"/>
+	<line x1="0" y1="5" x2="5" y2="0"/>
+	<polygon points="0,0 0,0.707 0.707,0"/>
+	<polygon points="5,5 5,4.293 4.293,5"/>
+</svg>

@@ -1,19 +1,18 @@
-<svg width="540" height="540" xmlns="http://www.w3.org/2000/svg">
+<svg width="740" height="740" xmlns="http://www.w3.org/2000/svg">
 	<style>
 		rect {
-			fill: red;
 			stroke-linejoin: round;
 			stroke-width: 30;
 			stroke: #3C2C28;
 			fill: #3C2C28;
 		}
 	</style>
-	<rect height="60" width="60" y="105" x="105"/>
-	<rect height="60" width="195" y="105" x="240"/>
+	<rect height="60" width="60" y="205" x="205"/>
+	<rect height="60" width="195" y="205" x="340"/>
 
-	<rect height="60" width="60" y="240" x="105"/>
-	<rect height="60" width="195" y="240" x="240"/>
+	<rect height="60" width="60" y="340" x="205"/>
+	<rect height="60" width="195" y="340" x="340"/>
 
-	<rect height="60" width="60" y="375" x="105"/>
-	<rect height="60" width="195" y="375" x="240"/>
+	<rect height="60" width="60" y="475" x="205"/>
+	<rect height="60" width="195" y="475" x="340"/>
 </svg>
