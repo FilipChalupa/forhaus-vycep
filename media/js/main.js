@@ -7,15 +7,22 @@ $(function () {
     	$body.addClass($(this).data('place'));
     });
 	$buttons.on('click',function(event) {
-		doAction($(this).data('action'));
+		var $this = $(this);
+		doAction($this.data('action'));
+		doAction($this.data('secondary'));
 	});
-	function doAction(action) {
+	function doAction(action,action2) {
 		switch (action) {
 			case 'menu':
-				$menus.addClass('show');
+				$menus.toggleClass('show');
 				break;
-			default:
-				alert(action);
+			case 'hideMenu':
+				$menus.removeClass('show');
+				break;
+			case 'home':
+				$body.removeClass('forhaus')
+					.removeClass('vycep');
+				break;
 		}
 	}
 });
