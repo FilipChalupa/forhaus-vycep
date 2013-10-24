@@ -89,6 +89,15 @@ body.forhaus #top .logo {
 	background-repeat: no-repeat;
 	background-position: center;
 }
+body.vycep #top {
+	background-color: #FFFFE6;
+}
+body.vycep #top .logo {
+	background-image: url(../images/vycep_logo.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
 #selection .divider {
 	z-index: 10;
 	position: absolute;
@@ -131,8 +140,11 @@ body.forhaus #top .logo {
 #top > .forhaus {
 	border-top: 0.3em solid #BAC405;
 }
-#content {
-	margin: 5em 0;
+#content > .specific {
+	min-height: inherit;
+	padding: 5em 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 body.forhaus #content {
 	background-image: url(../images/forhaus_pattern.svg);
@@ -238,8 +250,22 @@ body.forhaus #bottom .button:nth-child(2) {
 body.forhaus {
 	color: #333333;
 }
-body.forhaus #top .menu {
-
+body.vycep {
+	color: #FFFFE6;
+}
+#content .vycep.specific {
+	background-image: url(../images/wood.jpg);
+	background-size: contain;
+}
+body.vycep #top .menu .title {
+	background-color: #3D2D29;
+	border: 0.05em solid #221918;
+}
+body.vycep #top .menu .button {
+	background-color: #284B27;
+	border: 0.05em solid #221918;
+	border-left: 0.05em solid #547B36;
+	border-right: 0.05em solid #547B36;
 }
 body.forhaus #top .menu .title {
 	color: white;
