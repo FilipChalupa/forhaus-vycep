@@ -9,7 +9,7 @@
 	<link rel="shortcut icon" href="./favicon.ico" />
 	<script src="./media/js/jquery-1.10.2.min.js"></script>
 </head>
-<body class="vycep">
+<body>
 	<div id="selection">
 		<div class="forhaus place" data-place="forhaus"></div>
 		<div class="divider">
@@ -20,13 +20,14 @@
 	<div id="place">
 		<div id="top">
 			<div class="forhaus specific">
-				<div class="button" data-action="menu">
+				<div class="button showMenu" data-action="menu">
 					<img src="./media/images/menu_forhaus.svg" alt="Menu">
 				</div>
 				<div class="logo"></div>
 				<div class="menu">
 					<div class="outside button" data-action="hideMenu"></div>
 					<div class="title">Skupina 1</div>
+					<div class="button" data-action="showHome;hideMenu">Úvod</div>
 					<div class="button" data-action="menu-button;hideMenu">tlačítko</div>
 					<div class="button" data-action="menu-button2;hideMenu">tlačítko 2</div>
 					<div class="button" data-action="menu-button3;hideMenu">tlačítko 3</div>
@@ -37,22 +38,63 @@
 				</div>
 			</div>
 			<div class="vycep specific">
-				<div class="button" data-action="menu">
+				<div class="button showMenu" data-action="menu">
 					<img src="./media/images/menu_vycep.svg" alt="Menu">
 				</div>
 				<div class="logo"></div>
 				<div class="menu">
 					<div class="outside button" data-action="hideMenu"></div>
-					<div class="title">Skupina</div>
-					<div class="button" data-action="menu-button;hideMenu">tlačítko</div>
-					<div class="button" data-action="menu-button2;hideMenu">tlačítko 2</div>
-					<div class="button" data-action="menu-button3;hideMenu">tlačítko 3</div>
+					<div class="title">Sekce</div>
+					<div class="button" data-action="showHome;hideMenu">Úvod</div>
+					<div class="button" data-action="vycepNews;hideMenu">Novinky</div>
+					<div class="button" data-action="vycepProducts;hideMenu">Produkty</div>
+					<div class="button" data-action="vycepGalleries;hideMenu">Galerie</div>
+					<div class="button" data-action="vycepBeer;hideMenu">Pivo</div>
+					<div class="title">Místa</div>
+					<div id="restaurants_menu"></div>
 				</div>
 			</div>
 		</div>
 		<div id="content">
-			<div class="forhaus specific">Forhaus<br>Lorem<br>ipsum</div>
-			<div class="vycep specific">Výčep</div>
+			<div class="forhaus specific">
+				<div class="section" data-name="home">
+					úvod forhaus
+				</div>
+			</div>
+			<div class="vycep specific">
+				<div class="section" data-name="home">
+					úvod
+				</div>
+				<div id="vycepBeers" class="section" data-name="beer">
+					<div class="list"></div>
+				</div>
+				<div class="section" data-name="news">
+					Novinky
+				</div>
+				<div class="section" data-name="products">
+					Produkty
+				</div>
+				<div id="vycepRestaurants" class="section" data-name="restaurant">
+					<div class="title1"></div>
+					<!--<div class="title2">subnazev</div>-->
+					<div class="text"></div>
+					<div class="contact">
+						<div>
+							<div class="title">Kontakt</div>
+							<div class="value"></div>
+						</div>
+					</div>
+					<div class="opening">
+						<div>
+							<div class="title">Otevírací doba</div>
+							<div class="value"></div>
+						</div>
+					</div>
+				</div>
+				<div class="section" data-name="galleries">
+					galerie
+				</div>
+			</div>
 		</div>
 		<div id="bottom">
 			<div class="forhaus specific">

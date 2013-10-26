@@ -1,12 +1,21 @@
 $(function () {
     var $body = $('body'),
-    	$buttons = $('.button'),
     	$menus = $('#top .menu'),
+    	$showMenu = $('#top .showMenu'),
     	$selection = $('#selection .place'),
+    	$sectionsForhaus = $('#content .forhaus .section'),
+    	$sectionsVycep = $('#content .vycep .section'),
+    	$vycepBeers = $('#vycepBeers'),
     	$contents = $('#content > .specific'),
-    	$window = $(window);
+    	$window = $(window),
+    	$restaurantsMenu = $('#restaurants_menu'),
+    	data = {};
+    $vycepBeers.on('click','.item',function(){
+    	$(this).toggleClass('expand');
+    });
     $selection.click(function(){
     	$body.addClass($(this).data('place'));
+    	showSection('home');
     });
     function onResize(){
     	$contents.css('min-height',$window.height());
@@ -15,30 +24,77 @@ $(function () {
     	onResize();
     });
     onResize();
-	$buttons.on('click',function(event) {
-		$.each($(this).data('action').split(';'),function(key,val){
-			doAction(val);
+	$body.on('click','.button',function(event) {
+		var $this = $(this);
+		$.each($this.data('action').split(';'),function(key,val){
+			doAction(val,$this.data('param'));
 		});
 	});
-	function doAction(action) {
+	function doAction(action,param) {
 		switch (action) {
 			case 'menu':
-				$menus.toggleClass('show');
+				$menus.addClass('show');
+				$showMenu.addClass('active');
 				break;
 			case 'hideMenu':
 				$menus.removeClass('show');
+				$showMenu.removeClass('active');
 				break;
 			case 'home':
-				$body.removeClass('forhaus')
-					.removeClass('vycep');
+				$body.removeClass();
+				$body.removeClass();
+				break;
+			case 'showHome':
+				showSection('home');
+				break;
+			case 'vycepRestaurant':
+				var $temp = $('#vycepRestaurants');
+				$temp.find('.title1').text(data.vycepRestaurants[param].name);
+				$temp.find('.text').text(data.vycepRestaurants[param].description);
+				$temp.find('.contact .value').text(data.vycepRestaurants[param].short_contact);
+				$temp.find('.opening .value').text(data.vycepRestaurants[param].opening_hours);
+				showSection('restaurant');
+				break;
+			case 'vycepBeer':
+				var $temp = $vycepBeers.find(
+					'.list');
+				$.each(data.vycepBeers,function(key,val){
+					$temp.append('<div class="item"><div class="name">'+val.name+'</div><div class="price">'+val.price+'</div><div class="text">'+val.description+'</div></div>');
+				});
+				showSection('beer');
+				break;
+			case 'vycepProducts':
+				showSection('products');
+				break;
+			case 'vycepNews':
+				showSection('news');
+				break;
+			case 'vycepGalleries':
+				showSection('galleries');
 				break;
 		}
+	}
+	function showSection(name) {
+		var $sections;
+		if ($body.hasClass('forhaus')) {
+			$sections = $sectionsForhaus;
+		} else {
+			$sections = $sectionsVycep;
+		}
+		$sections.removeClass('show');
+		$sections.each(function(){
+			var $this = $(this);
+			if ($this.data('name') == name) {
+				$this.addClass('show');
+			}
+		});
 	}
 	var storageNames = {
 		'vycepNews': 'http://vycepnastojaka.cz/api/news/',
 		'vycepBeers': 'http://vycepnastojaka.cz/api/beers/',
 		'vycepProducts': 'http://vycepnastojaka.cz/api/products/',
-		//'vycepGalleries': 'http://vycepnastojaka.cz/api/galleries/'
+		'vycepGalleries': 'http://vycepnastojaka.cz/api/galleries/',
+		'vycepRestaurants': 'http://vycepnastojaka.cz/api/restaurants/',
 	};
 	if (!localStorage.lastupdate) {
 		localStorage.lastupdate = 0;
@@ -74,4 +130,10 @@ $(function () {
 		});
 	}
 	updateStorage(storageNames);
+	$.each(storageNames,function(key,val){
+		data[key] = JSON.parse(localStorage[key]);
+	});
+	$.each(data.vycepRestaurants,function(key,val){
+		$restaurantsMenu.append('<div class="button" data-action="vycepRestaurant;hideMenu" data-param="'+key+'">'+val.name+'</div>');
+	});
 });

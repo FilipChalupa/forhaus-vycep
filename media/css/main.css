@@ -10,9 +10,11 @@ body {
 .button {
 	cursor: pointer;
 	position: relative;
+	transition: all 0.2s;
 }
-.button:active {
-	box-shadow: 0 0 0.5em 0.5em rgba(0,0,0,0.5) inset;
+.button:active,
+.button.active {
+	box-shadow: 0 0 0.25em 0.25em rgba(0,0,0,0.5) inset;
 }
 .button img {
 	width: 100%;
@@ -207,17 +209,44 @@ body.forhaus #top .logo {
 	width: auto;
 	z-index: 1;
 }
-body.forhaus #bottom .button:first-child,
-body.forhaus #bottom .button:last-child {
-	background-color: #BAC405;
+#bottom .button:first-child,
+#bottom .button:last-child {
 	border: 0.05em solid #2A2928;
 }
-body.forhaus #bottom .button:nth-child(2) {
+body.forhaus #bottom .button:first-child,
+body.forhaus #bottom .button:last-child {
+	background-color: #333333;
+}
+body.forhaus #bottom .button:first-child:active,
+body.forhaus #bottom .button:last-child:active {
+	background-color: #BAC405;
+}
+#bottom .button:nth-child(2) {
 	box-shadow: inset 0 0 0.5em black;
+}
+body.vycep #bottom .button:first-child,
+body.vycep #bottom .button:last-child {
+	background-color: #3D2D29;
+}
+body.vycep #bottom .button:first-child:active,
+body.vycep #bottom .button:last-child:active {
+	background-color: #284B27
+}
+body.vycep #bottom .button:nth-child(2) {
+	background: rgb(235,234,207);
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ViZWFjZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ3JSIgc3RvcC1jb2xvcj0iI2Y0ZjRiNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmYmZiYTQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  rgba(235,234,207,1) 0%, rgba(244,244,183,1) 47%, rgba(251,251,164,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(235,234,207,1)), color-stop(47%,rgba(244,244,183,1)), color-stop(100%,rgba(251,251,164,1)));
+	background: -webkit-linear-gradient(top,  rgba(235,234,207,1) 0%,rgba(244,244,183,1) 47%,rgba(251,251,164,1) 100%);
+	background: -o-linear-gradient(top,  rgba(235,234,207,1) 0%,rgba(244,244,183,1) 47%,rgba(251,251,164,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(235,234,207,1) 0%,rgba(244,244,183,1) 47%,rgba(251,251,164,1) 100%);
+	background: linear-gradient(to bottom,  rgba(235,234,207,1) 0%,rgba(244,244,183,1) 47%,rgba(251,251,164,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebeacf', endColorstr='#fbfba4',GradientType=0 );
 }
 #top .menu {
 	text-align: left;
 	z-index: 30;
+	max-width: 100%;
 	position: absolute;
 		top: 5em;
 		left: -100%;
@@ -227,7 +256,8 @@ body.forhaus #bottom .button:nth-child(2) {
 #top .menu.show {
 		left: 0;
 }
-#top .menu > div {
+#top .menu .title,
+#top .menu .button {
 	padding: 0.5em 1.5em 0.5em 1em;
 	text-transform: uppercase;
 	background-color: white;
@@ -291,4 +321,67 @@ body.forhaus #top .menu .button {
 	background: linear-gradient(to bottom,  rgba(201,201,201,1) 0%,rgba(237,237,237,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9c9c9', endColorstr='#ededed',GradientType=0 );
 	border: 0.05em solid #CCCCCC;
+}
+#content .section {
+	padding: 10px;
+	display: none;
+}
+#content .section.show {
+	display: block;
+}
+body.vycep .section .title1 {
+	padding: 0.5em;
+	font-size: 150%;
+	background-color: #284B27;
+	border: 0.05em solid #547B36;
+	border-top-color: #1F291B;
+	border-bottom-color: #1F291B;
+	max-width: 90%;
+	margin: 0.25em auto;
+	text-transform: uppercase;
+}
+body.vycep .section .title2 {
+	padding: 0.5em;
+	font-size: 115%;
+	background-color: #3D2D29;
+	border: 0.05em solid black;
+	max-width: 90%;
+	margin: 0.25em auto;
+}
+body.vycep .section .text {
+	font-style: italic;
+}
+body.vycep .section .contact,
+body.vycep .section .opening {
+	float: left;
+	width: 50%;
+}
+body.vycep .section .contact > div,
+body.vycep .section .opening > div {
+	display: inline-block;
+	background-color: #3D2D29;
+	padding: 0.5em;
+	margin: 0.5em;
+}
+body.vycep .section .contact .title,
+body.vycep .section .opening .title {
+	font-size: 105%;
+	border-bottom: 0.05em solid #EDDBAC;
+}
+#vycepBeers .list .item {
+	cursor: pointer;
+}
+#vycepBeers .list .price {
+	display: inline-block;
+	width: 15%;
+}
+#vycepBeers .list .name {
+	display: inline-block;
+	width: 85%;
+}
+#vycepBeers .list .text {
+	display: none;
+}
+#vycepBeers .list .expand .text {
+	display: block;
 }
