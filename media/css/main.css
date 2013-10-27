@@ -368,61 +368,48 @@ body.vycep .section .opening .title {
 	font-size: 105%;
 	border-bottom: 0.05em solid #EDDBAC;
 }
-#vycepBeers .list,
-#vycepNews .list {
+.llist {
 	display: inline-block;
 	text-align: right;
 }
-#vycepBeers .list .item,
-#vycepNews .list .item {
+.llist .item {
 	cursor: pointer;
 }
-#vycepBeers .list .price {
+.llist .price {
 	display: inline-block;
 	width: 3em;
 }
-#vycepNews .list .date1,
-#vycepNews .list .date2 {
+.llist .date1,
+.llist .date2 {
 	display: inline-block;
 	width: 6em;
 }
-#vycepBeers .list .price:after {
+.llist .price:after {
 	content: ",-";
 	display: inline-block;
 }
-#vycepBeers .list .name,
-#vycepNews .list .name {
+.llist .name {
 	display: inline-block;
 	width: 13em;
 	text-align: left;
-	margin-left: 3em;
 }
-#vycepNews .list .name {
-	margin-left: 0;
-}
-#vycepBeers .list .text,
-#vycepNews .list .text {
+.llist .text {
 	display: none;
 	width: 16em;
 	text-align: justify;
-	margin: 0 0 1em 3em;
+	margin-bottom: 1em;
 }
-#vycepNews .list .text {
+#vycepNews .llist .text {
 	margin-left: 0;
 	width: 25em;
 }
-#vycepBeers .list .name,
-#vycepBeers .list .price,
-#vycepNews .list .top {
+.llist .top {
 	margin-top: 0.5em;
 	border-bottom: 0.05em solid #6F6D62;
 }
-#vycepBeers .list .expand .name,
-#vycepBeers .list .expand .price,
-#vycepNews .list .expand .top {
+.llist .expand .top {
 	border-bottom: none;
 }
-#vycepBeers .list .expand .text,
-#vycepNews .list .expand .text {
+.llist .expand .text {
 	display: block;
 }
