@@ -6,11 +6,15 @@ $(function () {
     	$sectionsForhaus = $('#content .forhaus .section'),
     	$sectionsVycep = $('#content .vycep .section'),
     	$vycepBeers = $('#vycepBeers'),
+    	$vycepNews = $('#vycepNews'),
     	$contents = $('#content > .specific'),
     	$window = $(window),
     	$restaurantsMenu = $('#restaurants_menu'),
     	data = {};
     $vycepBeers.on('click','.item',function(){
+    	$(this).toggleClass('expand');
+    });
+    $vycepNews.on('click','.item',function(){
     	$(this).toggleClass('expand');
     });
     $selection.click(function(){
@@ -58,15 +62,24 @@ $(function () {
 			case 'vycepBeer':
 				var $temp = $vycepBeers.find(
 					'.list');
-				$.each(data.vycepBeers,function(key,val){
-					$temp.append('<div class="item"><div class="name">'+val.name+'</div><div class="price">'+val.price+'</div><div class="text">'+val.description+'</div></div>');
-				});
+				if ($temp.html() == "") {
+					$.each(data.vycepBeers,function(key,val){
+						$temp.append('<div class="item"><div class="name">'+val.name+'</div><div class="price">'+val.price+'</div><div class="text">'+val.description+'</div></div>');
+					});
+				}
 				showSection('beer');
 				break;
 			case 'vycepProducts':
 				showSection('products');
 				break;
 			case 'vycepNews':
+				var $temp = $vycepNews.find(
+					'.list');
+				if ($temp.html() == "") {
+					$.each(data.vycepNews.reverse(),function(key,val){
+						$temp.append('<div class="item"><div class="top"><div class="name">'+val.title+'</div><div class="date1">'+val.date+'</div><div class="date2">'+val.date_to+'</div></div><div class="text">'+val.content+'</div></div>');
+					});
+				}
 				showSection('news');
 				break;
 			case 'vycepGalleries':
