@@ -8,10 +8,14 @@ $(function () {
     	$vycepBeers = $('#vycepBeers'),
     	$vycepNews = $('#vycepNews'),
     	$vycepProducts = $('#vycepProducts'),
+    	$vycepGalleries = $('#vycepGalleries'),
+    	$slideshow = $('#slideshow'),
     	$contents = $('#content > .specific'),
     	$window = $(window),
     	$restaurantsMenu = $('#restaurants_menu'),
-    	data = {};
+    	data = {},
+    	vycepRoot = 'http://vycepnastojaka.cz',
+    	forhausRoot = 'http://forhaus.cz';
     $vycepBeers.on('click','.item',function(){
     	$(this).toggleClass('expand');
     });
@@ -21,6 +25,19 @@ $(function () {
     $vycepNews.on('click','.item',function(){
     	$(this).toggleClass('expand');
     });
+    $vycepGalleries.on('click','.item',function(){
+    	var newSlide;
+    	$slideshow.addClass('show');
+    	slideshow.removeAllSlides();
+    	$.each(data.vycepGalleries[$(this).data('id')].photos,function(key,val){
+			var newSlide = slideshow.createSlide('<div class="full" style="background-image: url('+vycepRoot+'/media/'+val.photo_file+');"><div class="title">'+val.title+'</div></div>');
+			newSlide.append();
+    	});
+    });
+    var slideshow = $('#slideshow').swiper({
+		mode:'horizontal',
+		loop: true
+	});
     $selection.click(function(){
     	$body.addClass($(this).data('place'));
     	showSection('home');
@@ -40,6 +57,9 @@ $(function () {
 	});
 	function doAction(action,param) {
 		switch (action) {
+			case 'closeSlideshow':
+				$slideshow.removeClass('show');
+				break;
 			case 'menu':
 				$menus.addClass('show');
 				$showMenu.addClass('active');
@@ -94,6 +114,13 @@ $(function () {
 				showSection('news');
 				break;
 			case 'vycepGalleries':
+				var $temp = $vycepGalleries.find(
+					'.llist');
+				if ($temp.html() == "") {
+					$.each(data.vycepGalleries,function(key,val){
+						$temp.append('<div class="item expand" data-id="'+key+'"><div class="top"><div class="name">'+val.title+'</div></div><div class="text">'+val.description+'</div></div>');
+					});
+				}
 				showSection('galleries');
 				break;
 		}

@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="./media/css/main.css" />
 	<link rel="shortcut icon" href="./favicon.ico" />
 	<script src="./media/js/jquery-1.10.2.min.js"></script>
+	<script defer src="./media/js/idangerous.swiper-2.2.min.js"></script>
 </head>
 <body>
 	<div id="selection">
@@ -63,7 +64,8 @@
 			</div>
 			<div class="vycep specific">
 				<div class="section" data-name="home">
-					úvod
+					<div class="title1">Úvod - VÝČEP</div>
+					<div class="title2">Na Stojáka</div>
 				</div>
 				<div id="vycepBeers" class="section" data-name="beer">
 					<div class="llist"></div>
@@ -91,10 +93,13 @@
 						</div>
 					</div>
 				</div>
-				<div class="section" data-name="galleries">
-					galerie
+				<div id="vycepGalleries" class="section" data-name="galleries">
+					<div class="llist"></div>
 				</div>
 			</div>
+		</div>
+		<div id="slideshow" class="swiper-container">
+			<div class="swiper-wrapper"></div>
 		</div>
 		<div id="bottom">
 			<div class="forhaus specific">
@@ -115,8 +120,8 @@
 				<div class="button" data-action="home;hideMenu">
 					home
 				</div>
-				<div class="button" data-action="doSomothing2;hideMenu">
-					tlačítko
+				<div class="button" data-action="closeSlideshow;hideMenu">
+					Zavřít galerii
 				</div>
 			</div>
 		</div>
