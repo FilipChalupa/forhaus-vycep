@@ -9,6 +9,8 @@ $(function () {
     	$vycepNews = $('#vycepNews'),
     	$vycepProducts = $('#vycepProducts'),
     	$vycepGalleries = $('#vycepGalleries'),
+    	$forhausGalleries = $('#forhausGalleries'),
+    	$forhausEvents = $('#forhausEvents'),
     	$slideshow = $('#slideshow'),
     	$contents = $('#content > .specific'),
     	$window = $(window),
@@ -16,21 +18,28 @@ $(function () {
     	data = {},
     	vycepRoot = 'http://vycepnastojaka.cz',
     	forhausRoot = 'http://forhaus.cz';
-    $vycepBeers.on('click','.item',function(){
+    function toggleExpand(){
     	$(this).toggleClass('expand');
-    });
-    $vycepProducts.on('click','.item',function(){
-    	$(this).toggleClass('expand');
-    });
-    $vycepNews.on('click','.item',function(){
-    	$(this).toggleClass('expand');
-    });
+    }
+    $vycepBeers.on('click','.item',toggleExpand);
+    $vycepProducts.on('click','.item',toggleExpand);
+    $vycepNews.on('click','.item',toggleExpand);
+    $forhausEvents.on('click','.item',toggleExpand);
     $vycepGalleries.on('click','.item',function(){
     	var newSlide;
     	$slideshow.addClass('show');
     	slideshow.removeAllSlides();
     	$.each(data.vycepGalleries[$(this).data('id')].photos,function(key,val){
 			var newSlide = slideshow.createSlide('<div class="full" style="background-image: url('+vycepRoot+'/media/'+val.photo_file+');"><div class="title">'+val.title+'</div></div>');
+			newSlide.append();
+    	});
+    });
+    $forhausGalleries.on('click','.item',function(){
+    	var newSlide;
+    	$slideshow.addClass('show');
+    	slideshow.removeAllSlides();
+    	$.each(data.forhausGalleries[$(this).data('id')].get_pictures,function(key,val){
+			var newSlide = slideshow.createSlide('<div class="full" style="background-image: url('+forhausRoot+'/media/'+val.photo_file+');"><div class="title">'+val.title+'</div></div>');
 			newSlide.append();
     	});
     });
@@ -113,11 +122,31 @@ $(function () {
 				}
 				showSection('news');
 				break;
+			case 'forhausEvents':
+				var $temp = $forhausEvents.find(
+					'.llist');
+				if ($temp.html() == "") {
+					$.each(data.forhausEvents.reverse(),function(key,val){
+						$temp.append('<div class="item"><div class="top"><div class="name">'+val.title+'</div><div class="date1">'+val.date+'</div><div class="date2">'+val.date_to+'</div></div><div class="text">'+val.content+'</div></div>');
+					});
+				}
+				showSection('events');
+				break;
 			case 'vycepGalleries':
 				var $temp = $vycepGalleries.find(
 					'.llist');
 				if ($temp.html() == "") {
 					$.each(data.vycepGalleries,function(key,val){
+						$temp.append('<div class="item expand" data-id="'+key+'"><div class="top"><div class="name">'+val.title+'</div></div><div class="text">'+val.description+'</div></div>');
+					});
+				}
+				showSection('galleries');
+				break;
+			case 'forhausGalleries':
+				var $temp = $forhausGalleries.find(
+					'.llist');
+				if ($temp.html() == "") {
+					$.each(data.forhausGalleries,function(key,val){
 						$temp.append('<div class="item expand" data-id="'+key+'"><div class="top"><div class="name">'+val.title+'</div></div><div class="text">'+val.description+'</div></div>');
 					});
 				}
@@ -146,6 +175,8 @@ $(function () {
 		'vycepProducts': 'http://vycepnastojaka.cz/api/products/',
 		'vycepGalleries': 'http://vycepnastojaka.cz/api/galleries/',
 		'vycepRestaurants': 'http://vycepnastojaka.cz/api/restaurants/',
+		'forhausGalleries': 'http://forhaus.cz/api/galleries/',
+		'forhausEvents': 'http://forhaus.cz/api/event/'
 	};
 	if (!localStorage.lastupdate) {
 		localStorage.lastupdate = 0;

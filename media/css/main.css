@@ -89,11 +89,13 @@
 		top: -1.25em;
 		left: 1em;
 		right: 1em;
-	height: 1em;
+	height: 1.25em;
 	overflow:hidden;
 	text-overflow:ellipsis;
 }
-
+body.forhaus #slideshow .title {
+	color: white;
+}
 
 body {
 	text-align: center;
@@ -494,12 +496,14 @@ body.vycep .section .opening .title {
 	text-align: left;
 }
 .llist .text {
+	font-style: italic;
 	display: none;
 	width: 16em;
 	text-align: justify;
 	margin-bottom: 1em;
 }
-#vycepNews .llist .text {
+#vycepNews .llist .text,
+#forhausEvents .llist .text {
 	margin-left: 0;
 	width: 25em;
 }
