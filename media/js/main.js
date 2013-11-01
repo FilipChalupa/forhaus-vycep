@@ -1,5 +1,6 @@
 $(function () {
     var $body = $('body'),
+    	$top = $('#top'),
     	$menus = $('#top .menu'),
     	$showMenu = $('#top .showMenu'),
     	$selection = $('#selection .place'),
@@ -53,6 +54,7 @@ $(function () {
     });
     function onResize(){
     	$contents.css('min-height',$window.height());
+    	$menus.css('height',$window.height()-2*$top.height());
     }
     $window.resize(function(){
     	onResize();
@@ -72,6 +74,7 @@ $(function () {
 			case 'menu':
 				$menus.addClass('show');
 				$showMenu.addClass('active');
+				$slideshow.removeClass('show');
 				break;
 			case 'hideMenu':
 				$menus.removeClass('show');
@@ -79,7 +82,7 @@ $(function () {
 				break;
 			case 'home':
 				$body.removeClass();
-				$body.removeClass();
+				$slideshow.removeClass('show');
 				break;
 			case 'showHome':
 				showSection('home');
@@ -169,14 +172,15 @@ $(function () {
 			}
 		});
 	}
+	var lang = 'cs';
 	var storageNames = {
-		'vycepNews': 'http://vycepnastojaka.cz/api/news/',
-		'vycepBeers': 'http://vycepnastojaka.cz/api/beers/',
-		'vycepProducts': 'http://vycepnastojaka.cz/api/products/',
-		'vycepGalleries': 'http://vycepnastojaka.cz/api/galleries/',
-		'vycepRestaurants': 'http://vycepnastojaka.cz/api/restaurants/',
-		'forhausGalleries': 'http://forhaus.cz/api/galleries/',
-		'forhausEvents': 'http://forhaus.cz/api/event/'
+		'vycepNews': 'http://vycepnastojaka.cz/'+lang+'/api/news/',
+		'vycepBeers': 'http://vycepnastojaka.cz/'+lang+'/api/beers/',
+		'vycepProducts': 'http://vycepnastojaka.cz/'+lang+'/api/products/',
+		'vycepGalleries': 'http://vycepnastojaka.cz/'+lang+'/api/galleries/',
+		'vycepRestaurants': 'http://vycepnastojaka.cz/'+lang+'/api/restaurants/',
+		'forhausGalleries': 'http://forhaus.cz/'+lang+'/api/galleries/',
+		'forhausEvents': 'http://forhaus.cz/'+lang+'/api/event/'
 	};
 	if (!localStorage.lastupdate) {
 		localStorage.lastupdate = 0;

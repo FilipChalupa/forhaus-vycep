@@ -352,6 +352,7 @@ body.vycep #bottom .button:nth-child(2) {
 		left: -100%;
 	transition: 0.4s left;
 	-webkit-transition: 0.4s left;
+	overflow: auto;
 }
 #top .menu.show {
 		left: 0;
@@ -383,7 +384,16 @@ body.forhaus {
 body.vycep {
 	color: #FFFFE6;
 }
-#content .vycep.specific {
+#content .specific.vycep {
+	position: relative;
+}
+body.vycep #content:before {
+	content: '';
+	position: fixed;
+		top: 5em;
+		bottom: 5em;
+		left: 0;
+		right: 0;
 	background-image: url(../images/wood.jpg);
 	background-size: contain;
 }
@@ -429,16 +439,18 @@ body.forhaus #top .menu .button {
 #content .section.show {
 	display: block;
 }
-body.vycep .section .title1 {
+.section .title1 {
+	text-transform: uppercase;
+	margin: 0.25em auto;
 	padding: 0.5em;
 	font-size: 150%;
+}
+body.vycep .section .title1 {
 	background-color: #284B27;
 	border: 0.05em solid #547B36;
 	border-top-color: #1F291B;
 	border-bottom-color: #1F291B;
 	max-width: 90%;
-	margin: 0.25em auto;
-	text-transform: uppercase;
 }
 body.vycep .section .title2 {
 	padding: 0.5em;
@@ -448,8 +460,9 @@ body.vycep .section .title2 {
 	max-width: 90%;
 	margin: 0.25em auto;
 }
-body.vycep .section .text {
+.section .text {
 	font-style: italic;
+	text-align: justify;
 }
 body.vycep .section .contact,
 body.vycep .section .opening {
@@ -496,7 +509,6 @@ body.vycep .section .opening .title {
 	text-align: left;
 }
 .llist .text {
-	font-style: italic;
 	display: none;
 	width: 16em;
 	text-align: justify;
