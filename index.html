@@ -15,7 +15,7 @@
 	<div id="selection">
 		<div class="forhaus place" data-place="forhaus"></div>
 		<div class="divider">
-			<div>Vyberte restauraci</div>
+			<div>Vyberte<br>restauraci</div>
 		</div>
 		<div class="vycep place" data-place="vycep"></div>
 	</div>
@@ -31,8 +31,10 @@
 					<div class="title">Sekce</div>
 					<div class="button" data-action="showHome;hideMenu">Úvod</div>
 					<div class="button" data-action="showHistory;hideMenu">Historie</div>
+					<div class="button" data-action="showMap;hideMenu">Kde jsme</div>
 					<div class="button" data-action="forhausGalleries;hideMenu">Galerie</div>
 					<div class="button" data-action="forhausEvents;hideMenu">Události</div>
+					<div class="button" data-action="showContact;hideMenu">Kontakt</div>
 				</div>
 			</div>
 			<div class="vycep specific">
@@ -55,7 +57,7 @@
 		</div>
 		<div id="content">
 			<div class="forhaus specific">
-				<div class="section" data-name="home">
+				<div class="section" data-name="home" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
 					<div class="title1">Forhaus</div>
 					<div class="text">
 						<p>Spolu s naším sloganem „dobře jíst, často se smát, dlouho žít“ se Vám otevíráme s restaurací, která ráda obohatí Vaše životy o dobré jídlo a pohodu, tak abyste se cítili dobře, a abyste náš slogan společně s námi mohli prožívat.</p>
@@ -65,7 +67,7 @@
 						<p>Těšíme se na Vás a na naši společnou cestu zpět časem k tradicím, ale v prostorách a zázemí s technologiemi moderní doby, které jsme pro Vás připravovali s velkým nadšením.</p>
 					</div>
 				</div>
-				<div class="section" data-name="history">
+				<div class="section" data-name="history" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
 					<div class="title1">Historie</div>
 					<div class="text">
 						<p>Víte, že Rakousko-Uhersko existovalo přibližně půl století a v období svého vrcholu (začátkem dvacátého století) čítalo téměř 52 milionů obyvatel žijících na území cca dvaceti původních zemí, nynějších cca deseti evropských státu?</p>
@@ -76,15 +78,31 @@
 						<p>A víte, že název ulice Pekařská vznikl v podstatě chybou přepisu? Patrně se tak stalo nepochopením původního českého výrazu bekyně - mniška, tedy Bekyngasse, který vycházel z lokality dvou ženských klášterů v ulici (dominikánky a cisterciačky) a byl německými středověkými písaři chápán jako Becken-, Bäcken- či Bäckergasse, tedy Pekařská.</p>
 					</div>
 				</div>
-				<div id="forhausGalleries" class="section" data-name="galleries">
+				<div class="section" data-name="contact" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
+					<div class="title1">Kontakt</div>
+					<div class="contact">
+						Nedaleko Gastro Group s.r.o.<br>
+						Pekařská 4, 602 00 Brno<br>
+						tel. Forhaus: +420 702 200 047<br><br>
+						IČ: 29318572<br>
+						DIČ: CZ 29318572
+					</div>
+				</div>
+				<div class="section" data-name="map" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
+					<div class="title1">Kde jsme?</div>
+					<div class="text">
+						<p>Jsme tam, kde je energie a pohyb, tedy v samém centru starého Brna, na místě, které bylo dříve tvořeno historickým opevněním města Brna, v místě, kde se psala historie a tvořily tradice, tedy v horní části Pekařské ulice, v blízkosti křižovatky s Husovou ulicí (pod Šilingrovým náměstím) přímo naproti tramvajových zastávek. Je to místo, kterému se vrací jeho krása a je to místo, kam je to ze všech míst Brna nedaleko, tedy to pravé místo pro naši restauraci Forhaus, kde jste srdečné vítání!</p>
+					</div>
+				</div>
+				<div id="forhausGalleries" class="section" data-name="galleries" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
 					<div class="llist"></div>
 				</div>
-				<div id="forhausEvents" class="section" data-name="events">
+				<div id="forhausEvents" class="section" data-name="events" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
 					<div class="llist"></div>
 				</div>
 			</div>
 			<div class="vycep specific">
-				<div class="section" data-name="home">
+				<div class="section" data-name="home" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
 					<div class="title1">Výčep Na Stojáka</div>
 					<div class="text">
 						<p>Náš záměr začal vznikat začátkem roku 2012 z potřeby dvou dlouholetých kamarádů. Během hovorů u piva o pivu se zrodil koncept nabídky piv menších pivovarů a malopivovarů, či speciálních piv. Pilířem záměru se přitom stal návrat k tradicím a odkaz na staré dobré časy 1. republiky. A proto VÝČEP, za 1. republiky to byly především pivovarské výčepy, kam se chodilo na pivo. A proto také NA STOJÁKA, protože nebylo nijak neobvyklé stavit se na pár piv, postát u výčepu, prohodit pár slov s výčepním, nebo se známými, či neznámými, nebo sám, prostě jen tak, nezávazně, a ať už s jídlem či bez jídla.</p>
@@ -95,16 +113,16 @@
 						<p>Robert a Jirka</p>
 					</div>
 				</div>
-				<div id="vycepBeers" class="section" data-name="beer">
+				<div id="vycepBeers" class="section" data-name="beer" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
 					<div class="llist"></div>
 				</div>
-				<div id="vycepNews" class="section" data-name="news">
+				<div id="vycepNews" class="section" data-name="news" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
 					<div class="llist"></div>
 				</div>
-				<div id="vycepProducts" class="section" data-name="products">
+				<div id="vycepProducts" class="section" data-name="products" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
 					<div class="llist"></div>
 				</div>
-				<div id="vycepRestaurants" class="section" data-name="restaurant">
+				<div id="vycepRestaurants" class="section" data-name="restaurant" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
 					<div class="title1"></div>
 					<!--<div class="title2">subnazev</div>-->
 					<div class="text"></div>
@@ -121,7 +139,7 @@
 						</div>
 					</div>
 				</div>
-				<div id="vycepGalleries" class="section" data-name="galleries">
+				<div id="vycepGalleries" class="section" data-name="galleries" data-actiona="home;hideMenu" data-texta="a" data-actionb="home;hideMenu" data-textb="b">
 					<div class="llist"></div>
 				</div>
 			</div>
@@ -131,25 +149,25 @@
 		</div>
 		<div id="bottom">
 			<div class="forhaus specific">
-				<div class="button" data-action="doSomothing;hideMenu">
-					tlačítko
+				<div class="button bottomA">
+					<span>tlačítko</span>
 				</div>
 				<div class="button" data-action="home;hideMenu">
 					<div class="homeicon"></div>
 				</div>
-				<div class="button" data-action="doSomothing2;hideMenu">
-					tlačítko
+				<div class="button bottomB">
+					<span>tlačítko</span>
 				</div>
 			</div>
 			<div class="vycep specific">
-				<div class="button" data-action="doSomothing;hideMenu">
-					tlačítko
+				<div class="button bottomA">
+					<span>tlačítko</span>
 				</div>
 				<div class="button" data-action="home;hideMenu">
 					<div class="homeicon"></div>
 				</div>
-				<div class="button" data-action="closeSlideshow;hideMenu">
-					Zavřít galerii
+				<div class="button bottomB">
+					<span>Zavřít galerii</span>
 				</div>
 			</div>
 		</div>

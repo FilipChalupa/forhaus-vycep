@@ -13,6 +13,10 @@ $(function () {
     	$forhausGalleries = $('#forhausGalleries'),
     	$forhausEvents = $('#forhausEvents'),
     	$slideshow = $('#slideshow'),
+    	$bottomA = $('#bottom .bottomA'),
+    	$bottomB = $('#bottom .bottomB'),
+    	prevBAction = '',
+    	prevBText = '',
     	$contents = $('#content > .specific'),
     	$window = $(window),
     	$restaurantsMenu = $('#restaurants_menu'),
@@ -20,7 +24,23 @@ $(function () {
     	vycepRoot = 'http://vycepnastojaka.cz',
     	forhausRoot = 'http://forhaus.cz';
     function toggleExpand(){
-    	$(this).toggleClass('expand');
+    	if (!$menus.hasClass('show')) {
+    		$(this).toggleClass('expand');
+    	}
+    }
+    function showSlideshow() {
+    	$slideshow.addClass('show');
+    	prevBAction = $bottomB.first().data('action');
+    	prevBText = $bottomB.first().children('span').text();
+    	$bottomB.data('action','closeSlideshow');
+    	$bottomB.children('span').text('Zavřít');
+    }
+    function closeSlideshow() {
+    	if ($slideshow.hasClass('show')) {
+    		$slideshow.removeClass('show');
+    		$bottomB.data('action',prevBAction);
+    		$bottomB.children('span').text(prevBText);
+    	}
     }
     $vycepBeers.on('click','.item',toggleExpand);
     $vycepProducts.on('click','.item',toggleExpand);
@@ -28,7 +48,7 @@ $(function () {
     $forhausEvents.on('click','.item',toggleExpand);
     $vycepGalleries.on('click','.item',function(){
     	var newSlide;
-    	$slideshow.addClass('show');
+    	showSlideshow();
     	slideshow.removeAllSlides();
     	$.each(data.vycepGalleries[$(this).data('id')].photos,function(key,val){
 			var newSlide = slideshow.createSlide('<div class="full" style="background-image: url('+vycepRoot+'/media/'+val.photo_file+');"><div class="title">'+val.title+'</div></div>');
@@ -37,7 +57,7 @@ $(function () {
     });
     $forhausGalleries.on('click','.item',function(){
     	var newSlide;
-    	$slideshow.addClass('show');
+    	showSlideshow();
     	slideshow.removeAllSlides();
     	$.each(data.forhausGalleries[$(this).data('id')].get_pictures,function(key,val){
 			var newSlide = slideshow.createSlide('<div class="full" style="background-image: url('+forhausRoot+'/media/'+val.photo_file+');"><div class="title">'+val.title+'</div></div>');
@@ -69,12 +89,12 @@ $(function () {
 	function doAction(action,param) {
 		switch (action) {
 			case 'closeSlideshow':
-				$slideshow.removeClass('show');
+				closeSlideshow();
 				break;
 			case 'menu':
 				$menus.addClass('show');
 				$showMenu.addClass('active');
-				$slideshow.removeClass('show');
+				closeSlideshow();
 				break;
 			case 'hideMenu':
 				$menus.removeClass('show');
@@ -82,13 +102,19 @@ $(function () {
 				break;
 			case 'home':
 				$body.removeClass();
-				$slideshow.removeClass('show');
+				closeSlideshow();
 				break;
 			case 'showHome':
 				showSection('home');
 				break;
 			case 'showHistory':
 				showSection('history');
+				break;
+			case 'showMap':
+				showSection('map');
+				break;
+			case 'showContact':
+				showSection('contact');
 				break;
 			case 'vycepRestaurant':
 				var $temp = $('#vycepRestaurants');
@@ -172,6 +198,10 @@ $(function () {
 			var $this = $(this);
 			if ($this.data('name') == name) {
 				$this.addClass('show');
+				$bottomA.data('action',$this.data('actiona'));
+				$bottomA.children('span').text($this.data('texta'));
+				$bottomB.data('action',$this.data('actionb'));
+				$bottomB.children('span').text($this.data('textb'));
 			}
 		});
 	}
