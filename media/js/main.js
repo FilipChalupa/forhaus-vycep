@@ -87,6 +87,9 @@ $(function () {
 			case 'showHome':
 				showSection('home');
 				break;
+			case 'showHistory':
+				showSection('history');
+				break;
 			case 'vycepRestaurant':
 				var $temp = $('#vycepRestaurants');
 				$temp.find('.title1').text(data.vycepRestaurants[param].name);
