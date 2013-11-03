@@ -107,6 +107,7 @@ body {
 @media all and (min-resolution: 250dpi) { body { font-size: 25px; } }
 @media all and (min-resolution: 300dpi) { body { font-size: 30px; } }*/
 .button {
+	overflow: hidden;
 	cursor: pointer;
 	position: relative;
 	transition: all 0.2s;
@@ -114,10 +115,6 @@ body {
 .button:active,
 .button.active {
 	box-shadow: 0 0 0.25em 0.25em rgba(0,0,0,0.5) inset;
-}
-.button img {
-	width: 100%;
-	height: 100%;
 }
 .specific.forhaus,
 .specific.vycep,
@@ -528,4 +525,24 @@ body.vycep .section .opening .title {
 }
 .llist .expand .text {
 	display: block;
+}
+.menuicon {
+	position: absolute;
+		top: 0;
+		bottom: 0;
+		left: -0.6em;
+		right: -2em;
+	background-image: url(../images/menuicon.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.homeicon {
+	position: absolute;
+		top: -2em;
+		bottom: -1.5em;
+		left: -2.8em;
+		right: 0;
+	background-image: url(../images/homeicon.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
