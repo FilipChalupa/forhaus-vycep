@@ -307,7 +307,7 @@ body.forhaus #top .logo {
 		left: 50%;
 	margin-left: -2.5em;
 	width: 5em;
-	z-index: 2;
+	z-index: 22;
 	box-sizing: border-box;
 	line-height: 5em;
 }
@@ -321,13 +321,13 @@ body.forhaus #top .logo {
 	margin-left: 0;
 	margin-right: 2.5em;
 	width: auto;
-	z-index: 1;
+	z-index: 21;
 }
 #bottom .button:last-child {
 		right: 0;
 	margin-left: 2.5em;
 	width: auto;
-	z-index: 1;
+	z-index: 21;
 }
 #bottom .button:first-child,
 #bottom .button:last-child {
@@ -367,7 +367,7 @@ body.vycep #bottom .button:nth-child(2) {
 }
 #top .menu {
 	text-align: left;
-	z-index: 30;
+	/*z-index: 30;*/
 	max-width: 100%;
 	position: absolute;
 		top: 5em;
