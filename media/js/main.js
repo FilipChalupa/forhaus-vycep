@@ -22,18 +22,30 @@ $(function () {
     	$restaurantsMenu = $('#restaurants_menu'),
     	data = {},
     	vycepRoot = 'http://vycepnastojaka.cz',
-    	forhausRoot = 'http://forhaus.cz';
+    	forhausRoot = 'http://forhaus.cz',
+    	milliseconds = 0;
     function toggleExpand(){
     	if (!$menus.hasClass('show')) {
     		$(this).toggleClass('expand');
     	}
     }
     function showSlideshow() {
+    	milliseconds = new Date().getTime();
     	$slideshow.addClass('show');
     	prevBAction = $bottomB.first().data('action');
     	prevBText = $bottomB.first().children('span').text();
     	$bottomB.data('action','closeSlideshow');
     	$bottomB.children('span').text('Zavřít');
+    	setTimeout(function(){
+    		var hh = $slideshow.find('.full').first().height();
+    		$slideshow.find('img').load(function() {
+				var $this = $(this);
+				$this.parent('.full').addClass('loaded');
+    			if ($this.height() < hh) {
+    				$this.css('margin-top',(hh-$this.height())/2);
+    			}
+			});
+    	},100);
     }
     function closeSlideshow() {
     	if ($slideshow.hasClass('show')) {
@@ -51,7 +63,7 @@ $(function () {
     	showSlideshow();
     	slideshow.removeAllSlides();
     	$.each(data.vycepGalleries[$(this).data('id')].photos,function(key,val){
-			var newSlide = slideshow.createSlide('<div class="full" style="background-image: url('+vycepRoot+'/media/'+val.photo_file+');"><div class="title">'+val.title+'</div></div>');
+			var newSlide = slideshow.createSlide('<div class="full"><img src="'+vycepRoot+'/media/'+val.photo_file+'?'+milliseconds+'"><div class="title">'+val.title+'</div></div>');
 			newSlide.append();
     	});
     });
@@ -60,13 +72,16 @@ $(function () {
     	showSlideshow();
     	slideshow.removeAllSlides();
     	$.each(data.forhausGalleries[$(this).data('id')].get_pictures,function(key,val){
-			var newSlide = slideshow.createSlide('<div class="full" style="background-image: url('+forhausRoot+'/media/'+val.photo_file+');"><div class="title">'+val.title+'</div></div>');
+			var newSlide = slideshow.createSlide('<div class="full"><img src="'+forhausRoot+'/media/'+val.photo_file+'?'+milliseconds+'"><div class="title">'+val.title+'</div></div>');
 			newSlide.append();
     	});
     });
     var slideshow = $('#slideshow').swiper({
 		mode:'horizontal',
-		loop: true
+		loop: true,
+		onSlideClick: function(){
+			slideshow.swipeNext();
+		}
 	});
     $selection.click(function(){
     	$body.addClass($(this).data('place'));
