@@ -54,11 +54,11 @@ $(function () {
     		$bottomB.children('span').text(prevBText);
     	}
     }
-    $vycepBeers.on('click','.item',toggleExpand);
-    $vycepProducts.on('click','.item',toggleExpand);
-    $vycepNews.on('click','.item',toggleExpand);
-    $forhausEvents.on('click','.item',toggleExpand);
-    $vycepGalleries.on('click','.item',function(){
+    $vycepBeers.on('tap','.item',toggleExpand);
+    $vycepProducts.on('tap','.item',toggleExpand);
+    $vycepNews.on('tap','.item',toggleExpand);
+    $forhausEvents.on('tap','.item',toggleExpand);
+    $vycepGalleries.on('tap','.item',function(){
     	var newSlide;
     	showSlideshow();
     	slideshow.removeAllSlides();
@@ -67,7 +67,7 @@ $(function () {
 			newSlide.append();
     	});
     });
-    $forhausGalleries.on('click','.item',function(){
+    $forhausGalleries.on('tap','.item',function(){
     	var newSlide;
     	showSlideshow();
     	slideshow.removeAllSlides();
@@ -95,7 +95,7 @@ $(function () {
     	onResize();
     });
     onResize();
-	$body.on('click','.button',function(event) {
+	$body.on('tap','.button',function(event) {
 		var $this = $(this);
 		$.each($this.data('action').split(';'),function(key,val){
 			doAction(val,$this.data('param'));
