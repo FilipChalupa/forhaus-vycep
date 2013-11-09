@@ -23,10 +23,20 @@ $(function () {
     	data = {},
     	vycepRoot = 'http://vycepnastojaka.cz',
     	forhausRoot = 'http://forhaus.cz',
-    	milliseconds = 0;
+    	milliseconds = 0,
+    	preventBubble = false;
+    function blockBubble(){
+    	preventBubble = true;
+    	setTimeout(function(){
+    		preventBubble = false;
+    	},50);
+    }
     function toggleExpand(){
-    	if (!$menus.hasClass('show')) {
-    		$(this).toggleClass('expand');
+    	if (!preventBubble) {
+    		blockBubble();
+	    	if (!$menus.hasClass('show')) {
+	    		$(this).toggleClass('expand');
+	    	}
     	}
     }
     function showSlideshow() {
@@ -59,22 +69,28 @@ $(function () {
     $vycepNews.on('tap.widget','.item',toggleExpand);
     $forhausEvents.on('tap.widget','.item',toggleExpand);
     $vycepGalleries.on('tap.widget','.item',function(){
-    	var newSlide;
-    	showSlideshow();
-    	slideshow.removeAllSlides();
-    	$.each(data.vycepGalleries[$(this).data('id')].photos,function(key,val){
-			var newSlide = slideshow.createSlide('<div class="full"><img src="'+vycepRoot+'/media/'+val.photo_file+'?'+milliseconds+'"><div class="title">'+val.title+'</div></div>');
-			newSlide.append();
-    	});
+    	if (!preventBubble) {
+    		blockBubble();
+	    	var newSlide;
+	    	showSlideshow();
+	    	slideshow.removeAllSlides();
+	    	$.each(data.vycepGalleries[$(this).data('id')].photos,function(key,val){
+				var newSlide = slideshow.createSlide('<div class="full"><img src="'+vycepRoot+'/media/'+val.photo_file+'?'+milliseconds+'"><div class="title">'+val.title+'</div></div>');
+				newSlide.append();
+	    	});
+    	}
     });
     $forhausGalleries.on('tap.widget','.item',function(){
-    	var newSlide;
-    	showSlideshow();
-    	slideshow.removeAllSlides();
-    	$.each(data.forhausGalleries[$(this).data('id')].get_pictures,function(key,val){
-			var newSlide = slideshow.createSlide('<div class="full"><img src="'+forhausRoot+'/media/'+val.photo_file+'?'+milliseconds+'"><div class="title">'+val.title+'</div></div>');
-			newSlide.append();
-    	});
+    	if (!preventBubble) {
+    		blockBubble();
+	    	var newSlide;
+	    	showSlideshow();
+	    	slideshow.removeAllSlides();
+	    	$.each(data.forhausGalleries[$(this).data('id')].get_pictures,function(key,val){
+				var newSlide = slideshow.createSlide('<div class="full"><img src="'+forhausRoot+'/media/'+val.photo_file+'?'+milliseconds+'"><div class="title">'+val.title+'</div></div>');
+				newSlide.append();
+	    	});
+	    }
     });
     var slideshow = $('#slideshow').swiper({
 		mode:'horizontal',
@@ -96,10 +112,13 @@ $(function () {
     });
     onResize();
 	$body.on('tap.widget','.button',function(event) {
-		var $this = $(this);
-		$.each($this.data('action').split(';'),function(key,val){
-			doAction(val,$this.data('param'));
-		});
+		if (!preventBubble) {
+    		blockBubble();
+			var $this = $(this);
+			$.each($this.data('action').split(';'),function(key,val){
+				doAction(val,$this.data('param'));
+			});
+		}
 	});
 	function doAction(action,param) {
 		switch (action) {
