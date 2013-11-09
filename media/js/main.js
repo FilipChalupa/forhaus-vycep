@@ -26,10 +26,11 @@ $(function () {
     	milliseconds = 0,
     	preventBubble = false;
     function blockBubble(){
+    	console.log('prevent');
     	preventBubble = true;
     	setTimeout(function(){
     		preventBubble = false;
-    	},50);
+    	},100);
     }
     function toggleExpand(){
     	if (!preventBubble) {
@@ -99,10 +100,10 @@ $(function () {
 			slideshow.swipeNext();
 		}
 	});
-    $selection.click(function(){
-    	$body.addClass($(this).data('place'));
+	$selection.on('tap.widget',function(){
+		$body.addClass($(this).data('place'));
     	showSection('home');
-    });
+	});
     function onResize(){
     	$contents.css('min-height',$window.height());
     	$menus.css('height',$window.height()-2*$top.height());
