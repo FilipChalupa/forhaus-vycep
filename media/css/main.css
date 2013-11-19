@@ -1,3 +1,14 @@
+body {
+	background-color: black;
+	text-align: center;
+	font-size: 20px;
+	margin: 0;
+}
+/*@media all and (min-resolution: 150dpi) { body { font-size: 15px; } }
+@media all and (min-resolution: 200dpi) { body { font-size: 20px; } }
+@media all and (min-resolution: 250dpi) { body { font-size: 25px; } }
+@media all and (min-resolution: 300dpi) { body { font-size: 30px; } }*/
+
 * {
     -webkit-touch-callout:none;
     -webkit-user-select:none;
@@ -130,17 +141,6 @@ input, textarea {
 body.forhaus #slideshow .title {
 	color: white;
 }
-
-body {
-	background-color: black;
-	text-align: center;
-	font-size: 20px;
-	margin: 0;
-}
-/*@media all and (min-resolution: 150dpi) { body { font-size: 15px; } }
-@media all and (min-resolution: 200dpi) { body { font-size: 20px; } }
-@media all and (min-resolution: 250dpi) { body { font-size: 25px; } }
-@media all and (min-resolution: 300dpi) { body { font-size: 30px; } }*/
 .button {
 	overflow: hidden;
 	cursor: pointer;
@@ -503,7 +503,7 @@ body.vycep .section .title2 {
 }
 .section .text {
 	font-style: italic;
-	text-align: justify;
+	text-align: left;
 }
 body.vycep .section .contact,
 body.vycep .section .opening {
@@ -552,7 +552,7 @@ body.vycep .section .opening .title {
 .llist .text {
 	display: none;
 	width: 16em;
-	text-align: justify;
+	text-align: left;
 	margin-bottom: 1em;
 }
 #vycepNews .llist .text,
