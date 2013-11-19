@@ -269,6 +269,9 @@ body.vycep #top .logo {
 		left: 0;
 		right: 0;
 }
+#top, #bottom {
+	font-size: 60%;
+}
 #top {
 		top: 0;
 	height: 5em;
@@ -403,6 +406,7 @@ body.vycep #bottom .button:nth-child(2) {
 	padding: 0.5em 1.5em 0.5em 1em;
 	text-transform: uppercase;
 	background-color: white;
+	font-size: 170%;
 }
 #top .menu .button {
 	padding-left: 1.5em;

@@ -105,6 +105,7 @@ $(function () {
 	});
     function onResize(){
     	$contents.css('min-height',$window.height());
+    	alert($top.height());
     	$menus.css('height',$window.height()-2*$top.height());
     }
     $window.resize(function(){
