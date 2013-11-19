@@ -26,7 +26,6 @@ $(function () {
     	milliseconds = 0,
     	preventBubble = false;
     function blockBubble(){
-    	console.log('prevent');
     	preventBubble = true;
     	setTimeout(function(){
     		preventBubble = false;

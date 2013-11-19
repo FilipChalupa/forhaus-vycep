@@ -182,10 +182,8 @@ body.forhaus #top {
 	background-image: url(../images/concrete.jpg);
 	background-size: cover;
 }
-#selection .place.forhaus:after,
-body.forhaus #top .logo {
-	content: '';
-	display: block;
+#selection .place.forhaus .after,
+body.forhaus #top .logo .after {
 	position: absolute;
 		top: 2em;
 		left: 2em;
