@@ -435,8 +435,8 @@ body.vycep {
 body.vycep #content:before {
 	content: '';
 	position: fixed;
-		top: 5em;
-		bottom: 5em;
+		top: 0;
+		bottom: 0;
 		left: 0;
 		right: 0;
 	background-image: url(../images/wood.jpg);
