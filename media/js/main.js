@@ -31,11 +31,22 @@ $(function () {
     		preventBubble = false;
     	},100);
     }
+    function scrollToEl($el) {
+    	$('html, body').animate({
+	        scrollTop: $el.offset().top-$top.height()-10
+	    }, 800);
+    }
     function toggleExpand(){
+    	var $this = $(this);
     	if (!preventBubble) {
     		blockBubble();
 	    	if (!$menus.hasClass('show')) {
-	    		$(this).toggleClass('expand');
+	    		$this.toggleClass('expand');
+	    		if ($this.hasClass('expand')) {
+	    			if ($this.attr('id')) {
+	    				scrollToEl($('#'+$this.attr('id')));
+	    			}
+	    		}
 	    	}
     	}
     }
@@ -150,6 +161,9 @@ $(function () {
 			case 'showContact':
 				showSection('contact');
 				break;
+			case 'showReservation':
+				showSection('reservation');
+				break;
 			case 'vycepRestaurant':
 				var $temp = $('#vycepRestaurants');
 				$temp.find('.title1').text(data.vycepRestaurants[param].name);
@@ -163,7 +177,7 @@ $(function () {
 					'.llist');
 				if ($temp.html() == "") {
 					$.each(data.vycepBeers,function(key,val){
-						$temp.append('<div class="item"><div class="top"><div class="name">'+val.name+'</div><div class="price">'+val.price+'</div></div><div class="text">'+val.description+'</div></div>');
+						$temp.append('<div class="item" id="vycep_beer_'+key+'"><div class="top"><div class="name">'+val.name+'</div><div class="price">'+val.price+'</div></div><div class="text">'+val.description+'</div></div>');
 					});
 				}
 				showSection('beer');
@@ -173,7 +187,7 @@ $(function () {
 					'.llist');
 				if ($temp.html() == "") {
 					$.each(data.vycepProducts,function(key,val){
-						$temp.append('<div class="item"><div class="top"><div class="name">'+val.name+'</div><div class="price">'+val.price+'</div></div><div class="text">'+val.description+'</div></div>');
+						$temp.append('<div class="item" id="vycep_products_'+key+'"><div class="top"><div class="name">'+val.name+'</div><div class="price">'+val.price+'</div></div><div class="text">'+val.description+'</div></div>');
 					});
 				}
 				showSection('products');
@@ -183,7 +197,7 @@ $(function () {
 					'.llist');
 				if ($temp.html() == "") {
 					$.each(data.vycepNews.reverse(),function(key,val){
-						$temp.append('<div class="item"><div class="top"><div class="name">'+val.title+'</div><div class="date1">'+val.date+'</div><div class="date2">'+val.date_to+'</div></div><div class="text">'+val.content+'</div></div>');
+						$temp.append('<div class="item" id="vycep_news_'+key+'"><div class="top"><div class="name">'+val.title+'</div><div class="date1">'+val.date+'</div><div class="date2">'+val.date_to+'</div></div><div class="text">'+val.content+'</div></div>');
 					});
 				}
 				showSection('news');
@@ -193,7 +207,7 @@ $(function () {
 					'.llist');
 				if ($temp.html() == "") {
 					$.each(data.forhausEvents.reverse(),function(key,val){
-						$temp.append('<div class="item"><div class="top"><div class="name">'+val.title+'</div><div class="date1">'+val.date+'</div><div class="date2">'+val.date_to+'</div></div><div class="text">'+val.content+'</div></div>');
+						$temp.append('<div class="item" id="forhaus_event_'+key+'"><div class="top"><div class="name">'+val.title+'</div><div class="date1">'+val.date+'</div><div class="date2">'+val.date_to+'</div></div><div class="text">'+val.content+'</div></div>');
 					});
 				}
 				showSection('events');
@@ -203,7 +217,7 @@ $(function () {
 					'.llist');
 				if ($temp.html() == "") {
 					$.each(data.vycepGalleries,function(key,val){
-						$temp.append('<div class="item expand" data-id="'+key+'"><div class="top"><div class="name">'+val.title+'</div></div><div class="text">'+val.description+'</div></div>');
+						$temp.append('<div class="item expand" data-id="'+key+'" id="vycep_gal_'+key+'"><div class="top"><div class="name">'+val.title+'</div></div><div class="text">'+val.description+'</div></div>');
 					});
 				}
 				showSection('galleries');
@@ -213,7 +227,7 @@ $(function () {
 					'.llist');
 				if ($temp.html() == "") {
 					$.each(data.forhausGalleries,function(key,val){
-						$temp.append('<div class="item expand" data-id="'+key+'"><div class="top"><div class="name">'+val.title+'</div></div><div class="text">'+val.description+'</div></div>');
+						$temp.append('<div class="item expand" data-id="'+key+'" id="forhaus_gal_'+key+'"><div class="top"><div class="name">'+val.title+'</div></div><div class="text">'+val.description+'</div></div>');
 					});
 				}
 				showSection('galleries');
