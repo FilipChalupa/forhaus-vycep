@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.sphaera.fv"
+        versionCode="10" 
+        version   = "1.0.0">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Stamgast</name>
+
+    <description>
+        Vycepnastojaka.cz and forhaus.cz mobile app.
+    </description>
+
+    <author href="http://sphaera.cz" email="svouloslav@gmail.com">
+        Sphaera.cz
+    </author>
+
+    <preference name="permissions" value="none"/>
+    <access origin="*" />
+</widget>
+
