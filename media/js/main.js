@@ -292,6 +292,8 @@ $(function () {
 		    	localStorage[thisSection] = JSON.stringify(response);
 				if (Object.keys(newSections).length !== 0) {
 					updateStorage(newSections);
+				} else {
+					localStorage.lastupdate = time;
 				}
 		    }
 		});
