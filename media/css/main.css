@@ -87,6 +87,7 @@ input, textarea {
 	position: relative;
 }
 #slideshow {
+	font-size: 60%;
 	position: fixed;
 		top: 5em;
 		bottom: 5em;
@@ -593,4 +594,25 @@ body.vycep .section .opening .title {
 	background-image: url(../images/homeicon.svg);
 	background-size: cover;
 	background-repeat: no-repeat;*/
+}
+#forhaus_slides {
+	padding: 5px 0;
+	font-size: 60%;
+	width: 100%;
+	position: fixed;
+		bottom: 5em;
+		left: 0;
+		right: 0;
+	background-image: url(../images/forhaus_pattern.svg);
+	/*background-size: 0.3em;*/
+}
+#forhaus_slides,
+#forhaus_slides .swiper-slide,
+.slides_keep_space {
+	height: 200px;
+}
+#forhaus_slides .swiper-slide {
+	overflow: hidden;
+	height: 200px;
+	text-align: center;
 }

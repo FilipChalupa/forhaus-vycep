@@ -19,12 +19,15 @@ $(function () {
     	prevBText = '',
     	$contents = $('#content > .specific'),
     	$window = $(window),
+    	$forhausSlides = $('#forhaus_slides'),
     	$restaurantsMenu = $('#restaurants_menu'),
     	data = {},
     	vycepRoot = 'http://vycepnastojaka.cz',
     	forhausRoot = 'http://forhaus.cz',
     	milliseconds = 0,
     	preventBubble = false;
+
+	
     function blockBubble(){
     	preventBubble = true;
     	setTimeout(function(){
@@ -103,6 +106,28 @@ $(function () {
 	    	});
 	    }
     });
+    function onResize(){
+    	$forhausSlides.css('width',$window.width());
+    	$contents.css('min-height',$window.height());
+    	$menus.css('height',$window.height()-2*$top.height());
+    }
+    $window.resize(function(){
+    	onResize();
+    });
+    onResize();
+    var forhausSlideshow = $('#forhaus_slides').swiper({
+		mode:'horizontal',
+		loop: false,
+		centeredSlides: true,
+		slidesPerView: 1,
+		onSlideClick: function(){
+			if (forhausSlideshow.clickedSlide == forhausSlideshow.getLastSlide()) {
+				forhausSlideshow.swipeTo(0);
+			} else {
+				forhausSlideshow.swipeNext();
+			}
+		}
+	});
     var slideshow = $('#slideshow').swiper({
 		mode:'horizontal',
 		loop: true,
@@ -114,14 +139,6 @@ $(function () {
 		$body.addClass($(this).data('place'));
     	showSection('home');
 	});
-    function onResize(){
-    	$contents.css('min-height',$window.height());
-    	$menus.css('height',$window.height()-2*$top.height());
-    }
-    $window.resize(function(){
-    	onResize();
-    });
-    onResize();
 	$body.on('tap.widget','.button',function(event) {
 		if (!preventBubble) {
     		blockBubble();
