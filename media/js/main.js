@@ -25,8 +25,8 @@ $(function () {
     	vycepRoot = 'http://vycepnastojaka.cz',
     	forhausRoot = 'http://forhaus.cz',
     	milliseconds = 0,
-    	preventBubble = false;
-
+    	preventBubble = false,
+    	$vycepRestaurants = $('#vycepRestaurants');
 	
     function blockBubble(){
     	preventBubble = true;
@@ -148,8 +148,26 @@ $(function () {
 			});
 		}
 	});
+	function rnToBr(text){
+		return text.replace(/\r\n/g,'<br>');
+	}
 	function doAction(action,param) {
 		switch (action) {
+			case 'showMapForhaus':
+				window.open('http://maps.google.com/maps?q=Forhaus+restaurace%2C+Peka%C5%99sk%C3%A1%2C+Brno%2C+%C4%8Cesk%C3%A1+republika');
+				break;
+			case 'showMapVycep':
+				window.open('http://maps.google.com/maps?q='+$vycepRestaurants.data('lat')+'+'+$vycepRestaurants.data('lng'));
+				break;
+			case 'callForhaus':
+				window.open('tel:702200047');
+				break;
+			case 'callVycep':
+				window.open('tel:702202048');
+				break;
+			case 'doReservation':
+				showSection('reservation');
+				break;
 			case 'closeSlideshow':
 				closeSlideshow();
 				break;
@@ -182,11 +200,13 @@ $(function () {
 				showSection('reservation');
 				break;
 			case 'vycepRestaurant':
-				var $temp = $('#vycepRestaurants');
-				$temp.find('.title1').text(data.vycepRestaurants[param].name);
-				$temp.find('.text').text(data.vycepRestaurants[param].description);
-				$temp.find('.contact .value').text(data.vycepRestaurants[param].short_contact);
-				$temp.find('.opening .value').text(data.vycepRestaurants[param].opening_hours);
+				var $temp = $vycepRestaurants;
+				$temp.find('.title1').html(data.vycepRestaurants[param].name);
+				$temp.find('.text').html(data.vycepRestaurants[param].description);
+				$temp.find('.contact .value').html(rnToBr(data.vycepRestaurants[param].short_contact));
+				$temp.find('.opening .value').html(rnToBr(data.vycepRestaurants[param].opening_hours));
+				$vycepRestaurants.data('lat',data.vycepRestaurants[param].gps_lat);
+				$vycepRestaurants.data('lng',data.vycepRestaurants[param].gps_lng);
 				showSection('restaurant');
 				break;
 			case 'vycepBeer':
