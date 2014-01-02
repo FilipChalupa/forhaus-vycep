@@ -284,8 +284,10 @@ $(function () {
 			if ($this.data('name') == name) {
 				$this.addClass('show');
 				$bottomA.data('action',$this.data('actiona'));
+				$bottomA.data('param',$this.data('parama'));
 				$bottomA.children('span').text($this.data('texta'));
 				$bottomB.data('action',$this.data('actionb'));
+				$bottomB.data('param',$this.data('paramb'));
 				$bottomB.children('span').text($this.data('textb'));
 			}
 		});
