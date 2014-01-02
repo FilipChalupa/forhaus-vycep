@@ -208,6 +208,7 @@ $(function () {
 				$vycepRestaurants.data('lat',data.vycepRestaurants[param].gps_lat);
 				$vycepRestaurants.data('lng',data.vycepRestaurants[param].gps_lng);
 				showSection('restaurant');
+				closeSlideshow();
 				break;
 			case 'vycepBeer':
 				var $temp = $vycepBeers.find(
