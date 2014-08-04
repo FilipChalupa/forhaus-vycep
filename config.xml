@@ -16,7 +16,8 @@
     <author href="http://sphaera.cz" email="svouloslav@gmail.com">
         Sphaera.cz
     </author>
-
+    
+    <preference name="phonegap-version" value="3.3.0" />
     <preference name="permissions" value="none"/>
     <access origin="*" />
 </widget>
